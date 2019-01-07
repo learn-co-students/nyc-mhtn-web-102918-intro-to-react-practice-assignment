@@ -3,7 +3,11 @@ import logo from "./logo.svg";
 import "./App.css";
 
 const musicData = [
-  { id: 1, name: "Steven", band: "Daft punk", song: "Digital Love" },
+  { id: 1,
+  name: "Steven",
+  band: "Daft punk",
+  song: "Digital Love" },
+
   {
     id: 2,
     name: "Jason",
@@ -12,9 +16,27 @@ const musicData = [
   },
   {
     id: 3,
-    name: "Vickty",
+    name: "Vicky",
     band: "Khruangbin",
     song: "White gloves"
+  },
+  {
+    id: 4,
+    name: "Gabby",
+    band: "Billy Joel",
+    song: "Vienna"
+  },
+  {
+    id: 5,
+    name: "Hamilton",
+    band: "Fleetwood Mac",
+    song: "Gold Dust Woman"
+  },
+  {
+    id: 6,
+    name: "Jacob",
+    band: "Kanye West",
+    song: "Goldigger"
   }
 ];
 
@@ -38,19 +60,47 @@ const musicData = [
       <p>
         Vickty loves Khruangbin and recommends <strong>White gloves</strong>
       </p>
-    </div> 
+    </div>
   */
 }
 
 const FavMusic = props => {
+
   // your code goes here
   // this component should receive a prop with the music data
   console.log("The music data is :", props.musicData);
-  return <h1>Your code goes here</h1>;
-};
+  return (
+    musicData.map((data) =>
+      <div key={data.id}>
+        <h2>{data.name}'s preferences: </h2>
+        <p>
+          {data.name} loves {data.band} and recommends <strong>{data.song}</strong>
+        </p>
+      </div>
+    )
+  )
+}
+
+// class FavMusic extends Component {
+//   render(){
+//     console.log(this.props);
+//     return (
+//       this.props.musicData.map((data, id) =>
+//         <div key={data.id}>
+//           <h2>{data.name}'s preferences: </h2>
+//           <p>
+//             {data.name} loves {data.band} and recommends <strong>{data.song}</strong>
+//           </p>
+//         </div>
+//       )
+//     )
+//   }
+// }
+
+
 
 const App = props => {
-  return <FavMusic />;
+  return <FavMusic musicData={musicData}/>;
 };
 
 export default App;
